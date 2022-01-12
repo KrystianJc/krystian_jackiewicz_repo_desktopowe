@@ -15,6 +15,7 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
      */
     public DziennikWykonanyPrzezKrystianJackiewicz() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -63,9 +64,9 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
         jAllTextField.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jAllTextField.setText("Wszystkie wpisy");
 
-        jComboClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "2PTN", "2FTN", "2ALN", " ", " " }));
+        jComboClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "2PTN", "2FTN", "2ALN" }));
 
-        jComboLesson.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Matematyka", "J.Angielski", "Wychowanie fizyczne", "Historia" }));
+        jComboLesson.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Matematyka", "J.Angielski", "Chemia", "Historia" }));
 
         jSliderGrades.setMajorTickSpacing(1);
         jSliderGrades.setMaximum(6);
