@@ -37,8 +37,10 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
         jComboClass = new javax.swing.JComboBox<>();
         jComboLesson = new javax.swing.JComboBox<>();
         jSliderGrades = new javax.swing.JSlider();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane = new javax.swing.JScrollPane();
+        jTextAreaField = new javax.swing.JTextArea();
+        jSaveData = new javax.swing.JButton();
+        jReadData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -61,19 +63,24 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
         jAllTextField.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jAllTextField.setText("Wszystkie wpisy");
 
-        jComboClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2PTN", "2FTN", "2ALN", "2", " " }));
+        jComboClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "2PTN", "2FTN", "2ALN", " ", " " }));
 
-        jComboLesson.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matematyka", " " }));
+        jComboLesson.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Matematyka", "J.Angielski", "Wychowanie fizyczne", "Historia" }));
 
         jSliderGrades.setMajorTickSpacing(1);
         jSliderGrades.setMaximum(6);
         jSliderGrades.setMinorTickSpacing(1);
         jSliderGrades.setPaintLabels(true);
         jSliderGrades.setPaintTicks(true);
+        jSliderGrades.setValue(0);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaField.setColumns(20);
+        jTextAreaField.setRows(5);
+        jScrollPane.setViewportView(jTextAreaField);
+
+        jSaveData.setText("Zapisz dane");
+
+        jReadData.setText("Wczytaj dane");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,10 +90,20 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSurnameTextField)
-                            .addComponent(jNameTextField)
-                            .addComponent(jGrade))
+                        .addComponent(jLesson)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jClass)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboClass, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSaveData)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSurnameTextField)
+                                .addComponent(jNameTextField)
+                                .addComponent(jGrade)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(62, 62, 62)
@@ -95,32 +112,28 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSliderGrades, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLesson)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jClass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboClass, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jAllTextField)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jAllTextField)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addComponent(jReadData)
+                        .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNameTextField)
-                    .addComponent(jAllTextField)
-                    .addComponent(jName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jNameTextField)
+                        .addComponent(jAllTextField)
+                        .addComponent(jName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jReadData))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
@@ -141,8 +154,10 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
                             .addComponent(jSliderGrades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1)))
-                .addGap(121, 121, 121))
+                        .addComponent(jScrollPane)))
+                .addGap(57, 57, 57)
+                .addComponent(jSaveData)
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -192,10 +207,12 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
     private javax.swing.JLabel jLesson;
     private javax.swing.JTextField jName;
     private javax.swing.JLabel jNameTextField;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jReadData;
+    private javax.swing.JButton jSaveData;
+    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JSlider jSliderGrades;
     private javax.swing.JTextField jSurname;
     private javax.swing.JLabel jSurnameTextField;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaField;
     // End of variables declaration//GEN-END:variables
 }
