@@ -16,6 +16,7 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
     public DziennikWykonanyPrzezKrystianJackiewicz() {
         initComponents();
         setLocationRelativeTo(null);
+
     }
 
     /**
@@ -80,6 +81,11 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
         jScrollPane.setViewportView(jTextAreaField);
 
         jSaveData.setText("Zapisz dane");
+        jSaveData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSaveDataActionPerformed(evt);
+            }
+        });
 
         jReadData.setText("Wczytaj dane");
 
@@ -130,10 +136,11 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jNameTextField)
-                        .addComponent(jAllTextField)
-                        .addComponent(jName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jAllTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jNameTextField)
+                            .addComponent(jName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jReadData))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -163,6 +170,19 @@ public class DziennikWykonanyPrzezKrystianJackiewicz extends javax.swing.JFrame 
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jSaveDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSaveDataActionPerformed
+                
+        
+        String name = jName.getText();
+        String surname = jSurname.getText();
+        String classPerson = jComboClass.getSelectedItem().toString();
+        String lesson = jComboLesson.getSelectedItem().toString();
+        int nazwa =jSliderGrades.getValue();      
+        System.out.println(nazwa+"");
+        
+       // jTextAreaField.setText(nazwa+"");
+    }//GEN-LAST:event_jSaveDataActionPerformed
 
     /**
      * @param args the command line arguments
