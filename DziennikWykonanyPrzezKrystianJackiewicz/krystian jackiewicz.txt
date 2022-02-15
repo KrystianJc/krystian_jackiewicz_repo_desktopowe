@@ -1,2 +1,4 @@
 Krystian;Jackiewicz;2PTN;J.Angielski;6
 Janusz;Kowalski;2FTN;Chemia;4
+a;a;2FTN;J.Angielski;2
+b;b;2ALN;Matematyka;0
