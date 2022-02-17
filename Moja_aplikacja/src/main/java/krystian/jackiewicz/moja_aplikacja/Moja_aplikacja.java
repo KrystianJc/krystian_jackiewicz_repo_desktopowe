@@ -20,14 +20,15 @@ import java.util.logging.Logger;
  */
 public class Moja_aplikacja extends javax.swing.JFrame {
 
+   
     /**
      * Creates new form Moja_aplikacja
      */
     public Moja_aplikacja() {
         initComponents();
           f = new File("krystian_jackiewicz.txt");
-        
         setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -395,4 +396,5 @@ public class Moja_aplikacja extends javax.swing.JFrame {
     private javax.swing.JTextArea jTA_wynik;
     private javax.swing.JTextField jT_name;
     // End of variables declaration//GEN-END:variables
+
 }
