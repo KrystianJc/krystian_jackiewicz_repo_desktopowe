@@ -4,18 +4,16 @@
  */
 package krystian.jackiewicz.moja_aplikacja;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author jacki
  */
-public class O_programie extends javax.swing.JFrame {
+public class O_help extends javax.swing.JFrame {
 
     /**
-     * Creates new form O_programie
+     * Creates new form O_help
      */
-    public O_programie() {
+    public O_help() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -30,42 +28,55 @@ public class O_programie extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Skroty = new javax.swing.JLabel();
+        Zapisz = new javax.swing.JLabel();
+        Wczytaj = new javax.swing.JLabel();
+        Zamknij = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("O programie");
+        setTitle("Help");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("\t      Autor:\n\n               Krystian Jackiewicz 2PTN");
-        jScrollPane1.setViewportView(jTextArea1);
+        Skroty.setForeground(new java.awt.Color(255, 255, 255));
+        Skroty.setText("Skróty:");
+
+        Zapisz.setForeground(new java.awt.Color(255, 255, 255));
+        Zapisz.setText("Zapisz: CTRL + S");
+
+        Wczytaj.setForeground(new java.awt.Color(255, 255, 255));
+        Wczytaj.setText("Wczytaj: CTRL + O");
+
+        Zamknij.setForeground(new java.awt.Color(255, 255, 255));
+        Zamknij.setText("Zamknij: CTRL + Q");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(44, 44, 44)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Zamknij)
+                    .addComponent(Wczytaj)
+                    .addComponent(Zapisz)
+                    .addComponent(Skroty))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(31, 31, 31)
+                .addComponent(Skroty)
+                .addGap(18, 18, 18)
+                .addComponent(Zapisz)
+                .addGap(18, 18, 18)
+                .addComponent(Wczytaj)
+                .addGap(18, 18, 18)
+                .addComponent(Zamknij)
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,11 +92,6 @@ public class O_programie extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-          ImageIcon icon = new ImageIcon("src/ikonka.png");
-        setIconImage(icon.getImage());
-    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -104,27 +110,29 @@ public class O_programie extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(O_programie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(O_help.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(O_programie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(O_help.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(O_programie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(O_help.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(O_programie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(O_help.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new O_programie().setVisible(true);
+                new O_help().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Skroty;
+    private javax.swing.JLabel Wczytaj;
+    private javax.swing.JLabel Zamknij;
+    private javax.swing.JLabel Zapisz;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

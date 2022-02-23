@@ -4,6 +4,7 @@
  */
 package krystian.jackiewicz.moja_aplikacja;
 
+import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
@@ -48,9 +49,12 @@ public class Moja_aplikacja extends javax.swing.JFrame {
         jT_name = new javax.swing.JTextField();
         Utwory = new javax.swing.JComboBox<>();
         jS_ocena = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
+        jL_wyko = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTA_wynik = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TUtwory = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
         jM_pasek = new javax.swing.JMenuBar();
         jM_plik = new javax.swing.JMenu();
         jM_zapisz = new javax.swing.JMenuItem();
@@ -69,21 +73,27 @@ public class Moja_aplikacja extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Muzyka");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         Panel.setBackground(new java.awt.Color(0, 255, 255));
         Panel.setMaximumSize(new java.awt.Dimension(100, 100));
 
         Wykonawcy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Marshmello", "Alan Walker", "Avicii" }));
 
-        jL_wyk.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jL_wyk.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jL_wyk.setText("Wybierz wykonawce:");
 
-        jL_utw.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jL_utw.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jL_utw.setText("Wybierz utwór:");
         jL_utw.setToolTipText("");
 
-        jL_im.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jL_im.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jL_im.setText("Podaj swoje imię:");
 
         Utwory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Happier", "Alone", "Faded", "Ignite", "The Nights", "Wake me up" }));
@@ -97,8 +107,8 @@ public class Moja_aplikacja extends javax.swing.JFrame {
         jS_ocena.setValue(1);
         jS_ocena.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Jak oceniasz wybranego twórce?");
+        jL_wyko.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jL_wyko.setText("Jak oceniasz wybranego twórce?");
 
         jTA_wynik.setEditable(false);
         jTA_wynik.setColumns(20);
@@ -106,62 +116,76 @@ public class Moja_aplikacja extends javax.swing.JFrame {
         jTA_wynik.setText("Twoje ostatnie wybory pojawią się tu:");
         jScrollPane1.setViewportView(jTA_wynik);
 
+        TUtwory.setEditable(false);
+        TUtwory.setColumns(20);
+        TUtwory.setRows(5);
+        TUtwory.setText("Wybierz aby wyświetlić znane utwory artysty");
+        jScrollPane2.setViewportView(TUtwory);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("H:\\Prog\\Moja_aplikacja\\src\\main\\java\\krystian\\jackiewicz\\moja_aplikacja\\muzyka.png")); // NOI18N
+
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jS_ocena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(PanelLayout.createSequentialGroup()
-                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelLayout.createSequentialGroup()
-                                        .addComponent(jL_im)
-                                        .addGap(58, 58, 58)
-                                        .addComponent(jT_name, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(PanelLayout.createSequentialGroup()
-                                        .addComponent(jL_wyk)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Wykonawcy, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Utwory, 0, 100, Short.MAX_VALUE))))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jS_ocena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jL_utw))
+                                .addComponent(jL_im)
+                                .addGap(58, 58, 58)
+                                .addComponent(jT_name, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanelLayout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 56, Short.MAX_VALUE)))
+                                .addComponent(jL_wyk)
+                                .addGap(18, 18, 18)
+                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Wykonawcy, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Utwory, 0, 100, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addComponent(jL_utw)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jL_wyko)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jL_im)
-                    .addComponent(jT_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Wykonawcy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jL_wyk))
-                .addGap(27, 27, 27)
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jL_im)
+                            .addComponent(jT_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Wykonawcy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jL_wyk)))
+                    .addComponent(jLabel2))
+                .addGap(16, 16, 16)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jL_utw)
                     .addComponent(Utwory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jL_wyko)
+                .addGap(18, 18, 18)
                 .addComponent(jS_ocena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)))
         );
 
         jM_pasek.setBackground(new java.awt.Color(0, 0, 0));
@@ -243,6 +267,11 @@ public class Moja_aplikacja extends javax.swing.JFrame {
         jM_program.add(jSeparator4);
 
         jM_help.setText("Help");
+        jM_help.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jM_helpActionPerformed(evt);
+            }
+        });
         jM_program.add(jM_help);
 
         jM_pasek.add(jM_program);
@@ -268,6 +297,20 @@ public class Moja_aplikacja extends javax.swing.JFrame {
           String wykonawca = Wykonawcy.getSelectedItem().toString();
           String utwor = Utwory.getSelectedItem().toString();
           int ocena = jS_ocena.getValue();
+            switch (wykonawca) {
+            case "Marshmello":
+                TUtwory.setText("Znane utwory:\n -Alone \n -Silence \n -Stars \n -Friends");
+                break;
+            case "Alan Walker":
+                TUtwory.setText("Znane utwory:\n -The Spectre \n -Sing Me To Sleep \n -All Falls Down \n -Diamond Heart");
+                break;
+            case "Avicii":
+                TUtwory.setText("Znane utwory:\n -Waiting For Love \n -Hey Brother \n -For A Better Day \n -Levels");
+                break;
+            default:
+                TUtwory.setText("Nie wybrano wykonawcy :(");
+                break;
+        }
         try { 
             FileWriter fw = new FileWriter(f,true);
             
@@ -305,17 +348,27 @@ public class Moja_aplikacja extends javax.swing.JFrame {
     }//GEN-LAST:event_jM_wczytajActionPerformed
 
     private void jM_czcionkaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_czcionkaActionPerformed
-     
+        
      change = !change;
      if(change == true)
      {
-     jT_name.setFont(new Font("Script",Font.BOLD,16));
-     jTA_wynik.setFont(new Font("Script",Font.BOLD,16));
+     jT_name.setFont(new Font("Script",Font.BOLD,12));
+     jTA_wynik.setFont(new Font("Script",Font.BOLD,12));
+     jL_im.setFont(new Font("Script",Font.BOLD,24));
+     jL_utw.setFont(new Font("Script",Font.BOLD,24));
+     jL_wyk.setFont(new Font("Script",Font.BOLD,24));
+     TUtwory.setFont(new Font("Script",Font.BOLD,12));
+     jL_wyko.setFont(new Font("Script",Font.BOLD,24));
      }
      else
      {
          jT_name.setFont(new Font("UI",Font.PLAIN,12));
          jTA_wynik.setFont(new Font("UI",Font.PLAIN,12));
+         jL_im.setFont(new Font("UI",Font.PLAIN,24));
+         jL_utw.setFont(new Font("UI",Font.PLAIN,24));
+         jL_wyk.setFont(new Font("UI",Font.PLAIN,24));
+         TUtwory.setFont(new Font("UI",Font.PLAIN,12));
+         jL_wyko.setFont(new Font("UI",Font.PLAIN,24));
      }
     }//GEN-LAST:event_jM_czcionkaActionPerformed
 
@@ -327,9 +380,19 @@ public class Moja_aplikacja extends javax.swing.JFrame {
         }
         else
         {
-            Panel.setBackground(Color.CYAN);
+            Panel.setBackground(new java.awt.Color(0, 255, 255));
         }
     }//GEN-LAST:event_jM_tloActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        ImageIcon icon = new ImageIcon("src/ikonka.png");
+        setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jM_helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_helpActionPerformed
+           new O_help().setVisible(true);
+
+    }//GEN-LAST:event_jM_helpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,12 +433,14 @@ public class Moja_aplikacja extends javax.swing.JFrame {
      boolean background = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel;
+    private javax.swing.JTextArea TUtwory;
     private javax.swing.JComboBox<String> Utwory;
     private javax.swing.JComboBox<String> Wykonawcy;
     private javax.swing.JLabel jL_im;
     private javax.swing.JLabel jL_utw;
     private javax.swing.JLabel jL_wyk;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jL_wyko;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jM_czcionka;
     private javax.swing.JMenu jM_edycja;
     private javax.swing.JMenuItem jM_help;
@@ -389,6 +454,7 @@ public class Moja_aplikacja extends javax.swing.JFrame {
     private javax.swing.JMenuItem jM_zapisz;
     private javax.swing.JSlider jS_ocena;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
